@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="https://vhcalhdbdb.topsap.net:44300/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://vhcalhdbdb.topsap.net:44300/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://vhcalhdbdb.topsap.net:44300/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://vhcalhdbdb.topsap.net:44300/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://vhcalhdbdb.topsap.net:44300/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zqq_test" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZI_QQ_T006Type" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Msehi"/>
+                </Key>
+                <Property Name="Msehi" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Internal UoM" sap:quickinfo="Unit of Measurement" sap:semantics="unit-of-measure"/>
+                <Property Name="Msehl" Type="Edm.String" MaxLength="30" sap:label="UoM Text" sap:quickinfo="Unit of Measurement Text (Maximum 30 Characters)"/>
+            </EntityType>
+            <EntityType Name="ZI_QQ_TestType" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Matnr"/>
+                </Key>
+                <Property Name="Matnr" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="Ersda" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Created On"/>
+                <Property Name="CreatedAtTime" Type="Edm.Time" Precision="0" sap:label="Created At Time" sap:quickinfo="Time of Creation"/>
+                <Property Name="Ernam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created by" sap:quickinfo="Name of Person who Created the Object"/>
+                <Property Name="Laeda" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Last Change" sap:quickinfo="Date of Last Change"/>
+                <Property Name="Aenam" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed by" sap:quickinfo="Name of person who changed object"/>
+                <Property Name="Vpsta" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Compl. maint. status" sap:quickinfo="Maintenance status of complete material"/>
+                <Property Name="Pstat" Type="Edm.String" MaxLength="15" sap:display-format="UpperCase" sap:label="Maintenance status"/>
+                <Property Name="Lvorm" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="DF at client level" sap:quickinfo="Flag Material for Deletion at Client Level"/>
+                <Property Name="Mtart" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Material type"/>
+                <Property Name="Mbrsh" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Industry Sector"/>
+                <Property Name="Matkl" Type="Edm.String" MaxLength="9" sap:display-format="UpperCase" sap:label="Material Group"/>
+                <Property Name="Bismt" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Old material number"/>
+                <Property Name="Meins" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:value-list="standard" sap:semantics="unit-of-measure"/>
+                <Property Name="ColorRed" Type="Edm.Byte"/>
+                <Property Name="ColorGreen" Type="Edm.Byte"/>
+                <Property Name="ColorYellow" Type="Edm.Byte"/>
+            </EntityType>
+            <EntityContainer Name="cds_zqq_test_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZI_QQ_T006" EntityType="cds_zqq_test.ZI_QQ_T006Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_QQ_Test" EntityType="cds_zqq_test.ZI_QQ_TestType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <Annotations Target="cds_zqq_test.ZI_QQ_TestType/Meins" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String="单位"/>
+                        <PropertyValue Property="CollectionPath" String="ZI_QQ_T006"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Meins"/>
+                                    <PropertyValue Property="ValueListProperty" String="msehi"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Msehi"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Msehl"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zqq_test.cds_zqq_test_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <atom:link rel="self" href="https://vhcalhdbdb.topsap.net:44300/sap/opu/odata/sap/ZUI_QQ_TEST/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://vhcalhdbdb.topsap.net:44300/sap/opu/odata/sap/ZUI_QQ_TEST/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
